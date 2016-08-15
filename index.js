@@ -7,6 +7,10 @@ var assert = require('assert');
 var ObjectId = require('mongodb').ObjectID;
 var url = 'mongodb://localhost:27017/test';
 var search = require('./mongo/search.js');
+app.get("/",function(req,resp){
+  resp.end("<!doctype html><html><head><title>image search abstraction layer</title></head><body><h1>Image search abstraction layer by Computerluca</h1><p>Image Search Abstraction Layer <ul><li>User Story: I can get the image URLs, alt text and page urls for a set of images relating to a given search string. </li><li>User Story: I can paginate through the responses by adding a ?offset=2 parameter to the URL.</li><li> User Story: I can get a list of the most recently submitted search strings.</li></ul><br/>Examples <a href='http://image-search-abstraction-layer-computerluca.c9users.io/search/cats?offset=2'>http://image-search-abstraction-layer-computerluca.c9users.io/search/cats?offset=2</a><br/><a href='http://image-search-abstraction-layer-computerluca.c9users.io/search/latest'>http://image-search-abstraction-layer-computerluca.c9users.io/search/latest</a> (the latest 10 search results)</body></html>")
+  
+});
 app.get('/search/latest',function(req,resp){
   MongoClient.connect(url, function(err,db) {
   assert.equal(null, err);

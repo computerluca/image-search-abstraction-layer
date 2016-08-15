@@ -12,7 +12,7 @@ module.exports = {
   });
 },
 "queryresults":function(db,callback){
-    var cursor = db.collection('searchresult').find().limit(10);
+    var cursor = db.collection('searchresult').find({},{"_id":0}).limit(10);
     cursor.toArray(function(err,result)
     {
         if(err) throw err;
