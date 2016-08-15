@@ -12,7 +12,12 @@ app.get('/search/latest',function(req,resp){
   assert.equal(null, err);
  search.queryresults(db,function(err,data) {
     if(err) throw err;
-      if(data) resp.end(JSON.stringify(data));
+      if(data && data.length>0){
+      resp.end(JSON.stringify(data));
+      }
+      else{
+        resp.end("No recent search result found");
+      }
       db.close();
   });
   

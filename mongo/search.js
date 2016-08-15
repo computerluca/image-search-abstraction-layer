@@ -3,7 +3,7 @@ var assert = require('assert');
 var moment = require('moment');
 module.exports = {
  "insertDocument" : function(db,query, callback) {
-   db.collection('searchresults').insertOne( {
+   db.collection('searchresult').insertOne( {
        "query":query,
        "when":moment().format()
    }, function(err, result) {
@@ -12,7 +12,7 @@ module.exports = {
   });
 },
 "queryresults":function(db,callback){
-    var cursor = db.collection('searchresults').find();
+    var cursor = db.collection('searchresult').find().limit(10);
     cursor.toArray(function(err,result)
     {
         if(err) throw err;
